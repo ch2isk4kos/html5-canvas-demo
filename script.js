@@ -26,6 +26,7 @@ canvas.addEventListener("click", (e) => {
   //   console.log("click x:", mouse.x);
   mouse.y = e.y;
   //   console.log("click y:", mouse.y);
+  particles.push(new Particle());
 });
 
 // on mouse event
@@ -39,10 +40,10 @@ canvas.addEventListener("mousemove", (e) => {
 // animation
 class Particle {
   constructor() {
-    // this.x = mouse.x;
-    // this.y = mouse.y;
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
+    this.x = mouse.x;
+    this.y = mouse.y;
+    // this.x = Math.random() * canvas.width;
+    // this.y = Math.random() * canvas.height;
     this.size = Math.random() * 15 + 1;
     this.speedX = Math.random() * 3 - 1.5;
     this.speedY = Math.random() * 3 - 1.5;
@@ -63,15 +64,6 @@ class Particle {
     ctx.stroke();
   };
 }
-
-// create a set of Particles
-const init = () => {
-  for (let i = 0; i < 100; i++) {
-    particles.push(new Particle());
-  }
-};
-
-init();
 
 const handleParticles = () => {
   for (let i = 0; i < particles.length; i++) {
