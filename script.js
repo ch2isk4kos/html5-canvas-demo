@@ -54,7 +54,7 @@ class Particle {
     ctx.strokeStyle = "white";
     ctx.lineWidth = 5;
     ctx.beginPath();
-    ctx.arc(mouse.x, mouse.y, 50, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, 50, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
   };
