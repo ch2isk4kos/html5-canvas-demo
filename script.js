@@ -53,6 +53,7 @@ class Particle {
     this.size = Math.random() * 15 + 1;
     this.speedX = Math.random() * 3 - 1.5;
     this.speedY = Math.random() * 3 - 1.5;
+    this.color = "hsl(" + hue + ", 100%, 50%)";
   }
   update = () => {
     this.x += this.speedX;
@@ -61,7 +62,7 @@ class Particle {
   };
 
   draw = () => {
-    ctx.fillStyle = "hsl(" + hue + ", 100%, 50%)";
+    ctx.fillStyle = this.color;
     ctx.strokeStyle = "white";
     ctx.lineWidth = 2.5;
     ctx.beginPath();
@@ -88,7 +89,9 @@ const animate = () => {
   ctx.fillStyle = "rgba(0,0,0,0.02)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   handleParticles();
-  hue++;
+  //   hue++;
+  //   hue += 5;
+  hue += 0.5;
   requestAnimationFrame(animate); // recursive funct.
 };
 
