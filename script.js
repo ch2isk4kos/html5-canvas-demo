@@ -54,11 +54,3 @@ const animate = () => {
 };
 
 animate();
-// circle configuration
-// ctx.fillStyle = "grey";
-// ctx.strokeStyle = "white";
-// ctx.lineWidth = 5;
-// ctx.beginPath();
-// ctx.arc(100, 100, 50, 0, Math.PI * 2);
-// ctx.fill();
-// ctx.stroke();
