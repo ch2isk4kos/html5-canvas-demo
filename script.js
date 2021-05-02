@@ -35,21 +35,33 @@ canvas.addEventListener("mousemove", (e) => {
   //   console.log("mouse y:", mouse.y);
 });
 
-const drawCircle = () => {
-  ctx.fillStyle = "grey";
-  ctx.strokeStyle = "white";
-  ctx.lineWidth = 5;
-  ctx.beginPath();
-  //   ctx.arc(100, 100, 50, 0, Math.PI * 2);
-  ctx.arc(mouse.x, mouse.y, 50, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-};
-
 // animation
+class Particle {
+  constructor() {
+    this.x = mouse.x;
+    this.y = mouse.y;
+    this.size = Math.random() * 5 + 1;
+    this.speedX = Math.random() * 3 - 1.5;
+    this.speedY = Math.random() * 3 - 1.5;
+  }
+  update = () => {
+    this.x += this.speedX;
+    this.y += this.speedY;
+  };
+
+  draw = () => {
+    ctx.fillStyle = "grey";
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 50, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+  };
+}
+
 const animate = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawCircle();
   requestAnimationFrame(animate); // recursive funct.
 };
 
