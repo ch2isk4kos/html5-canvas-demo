@@ -4,6 +4,7 @@ canvas.height = window.innerHeight; // canvas covers entire browser window heigh
 
 const ctx = canvas.getContext("2d");
 const particles = [];
+let hue = 0;
 
 console.log("canvas:", canvas);
 console.log("ctx:", ctx);
@@ -26,7 +27,9 @@ canvas.addEventListener("click", (e) => {
   //   console.log("click x:", mouse.x);
   mouse.y = e.y;
   //   console.log("click y:", mouse.y);
-  particles.push(new Particle());
+  for (let i = 0; i < 10; i++) {
+    particles.push(new Particle());
+  }
 });
 
 // on mouse event
@@ -35,6 +38,9 @@ canvas.addEventListener("mousemove", (e) => {
   //   console.log("mouse x:", mouse.x);
   mouse.y = e.y;
   //   console.log("mouse y:", mouse.y);
+  for (let i = 0; i < 5; i++) {
+    particles.push(new Particle());
+  }
 });
 
 // animation
@@ -55,7 +61,7 @@ class Particle {
   };
 
   draw = () => {
-    ctx.fillStyle = "grey";
+    ctx.fillStyle = "hsl(" + hue + ", 100%, 50%)";
     ctx.strokeStyle = "white";
     ctx.lineWidth = 2.5;
     ctx.beginPath();
@@ -78,8 +84,11 @@ const handleParticles = () => {
 };
 
 const animate = () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "rgba(0,0,0,0.02)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
   handleParticles();
+  hue++;
   requestAnimationFrame(animate); // recursive funct.
 };
 
