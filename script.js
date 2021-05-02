@@ -14,12 +14,49 @@ window.addEventListener("resize", () => {
 });
 
 // interactivity
+const mouse = {
+  x: undefined,
+  y: undefined,
+};
+
+// on click event
+canvas.addEventListener("click", (e) => {
+  mouse.x = e.x;
+  //   console.log("click x:", mouse.x);
+  mouse.y = e.y;
+  //   console.log("click y:", mouse.y);
+
+  drawCircle();
+});
+
+// on mouse event
+canvas.addEventListener("mousemove", (e) => {
+  mouse.x = e.x;
+  console.log("mouse x:", mouse.x);
+  mouse.y = e.y;
+  console.log("mouse y:", mouse.y);
+
+  drawCircle();
+});
+
+const drawCircle = () => {
+  ctx.fillStyle = "grey";
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 5;
+  ctx.beginPath();
+  //   ctx.arc(100, 100, 50, 0, Math.PI * 2);
+  ctx.arc(mouse.x, mouse.y, 50, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+};
+
+// drawCircle();
 
 // circle configuration
-ctx.fillStyle = "grey";
-ctx.strokeStyle = "white";
-ctx.lineWidth = 5;
-ctx.beginPath();
-ctx.arc(100, 100, 50, 0, Math.PI * 2);
-ctx.fill();
-ctx.stroke();
+// ctx.fillStyle = "grey";
+// ctx.strokeStyle = "white";
+// ctx.lineWidth = 5;
+// ctx.beginPath();
+// ctx.arc(100, 100, 50, 0, Math.PI * 2);
+// ctx.fill();
+// ctx.stroke();
