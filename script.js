@@ -25,18 +25,14 @@ canvas.addEventListener("click", (e) => {
   //   console.log("click x:", mouse.x);
   mouse.y = e.y;
   //   console.log("click y:", mouse.y);
-
-  drawCircle();
 });
 
 // on mouse event
 canvas.addEventListener("mousemove", (e) => {
   mouse.x = e.x;
-  console.log("mouse x:", mouse.x);
+  //   console.log("mouse x:", mouse.x);
   mouse.y = e.y;
-  console.log("mouse y:", mouse.y);
-
-  drawCircle();
+  //   console.log("mouse y:", mouse.y);
 });
 
 const drawCircle = () => {
@@ -50,8 +46,14 @@ const drawCircle = () => {
   ctx.stroke();
 };
 
-// drawCircle();
+// animation
+const animate = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawCircle();
+  requestAnimationFrame(animate); // recursive funct.
+};
 
+animate();
 // circle configuration
 // ctx.fillStyle = "grey";
 // ctx.strokeStyle = "white";
